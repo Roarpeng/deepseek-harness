@@ -38,3 +38,7 @@ apps/web/dist/
 worktrees/
 .agents/worktrees/
 .typert-*/
+
+# GraphFlow artifacts (context engine MCP integration)
+.graphflow-cache/
+graphflow-out/

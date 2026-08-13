@@ -260,6 +260,11 @@
 # The npm version is pinned (@1.9.13) so the discovered tool set and schemas
 # stay deterministic across restarts and npx-cache states; bump the pin to
 # upgrade GraphFlow.
+#
+# `cwd` points at a neutral temp dir (never the harness's working tree): the
+# server must not auto-index a huge checkout — it crashed during such an index
+# on a full repository. With an unsafe/unresolvable root it skips the auto
+# file watcher and stays idle; agents pass `rootDir` per tool call.
 - id: mcp-graphflow
   name: '@deepseek-ai/dsh-mcp-client'
   config:
@@ -270,6 +275,7 @@
     env:
       GRAPHFLOW_MCP_STDIO: '1'
       GRAPHFLOW_LOG_JSON: '1'
+    cwd: !!js (process.env.TEMP || process.env.TMP || '/tmp')
 
 # ── remaining model-facing rows ─────────────────────────────────────────────
 
