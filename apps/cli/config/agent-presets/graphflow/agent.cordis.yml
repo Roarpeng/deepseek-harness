@@ -256,13 +256,17 @@
 # realm, exactly like the tool rows above. `failOnStartupError` is left at its
 # default (false): a slow first `npx` download or a transient server failure
 # logs and enters the reconnect loop instead of failing the whole preset.
+#
+# The npm version is pinned (@1.9.13) so the discovered tool set and schemas
+# stay deterministic across restarts and npx-cache states; bump the pin to
+# upgrade GraphFlow.
 - id: mcp-graphflow
   name: '@deepseek-ai/dsh-mcp-client'
   config:
     serverName: graphflow
     transport: stdio
     command: npx
-    args: ['-y', '--package=@roarpeng/graphflow', 'graphflow-mcp']
+    args: ['-y', '--package=@roarpeng/graphflow@1.9.13', 'graphflow-mcp']
     env:
       GRAPHFLOW_MCP_STDIO: '1'
       GRAPHFLOW_LOG_JSON: '1'
