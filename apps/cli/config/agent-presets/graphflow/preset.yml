@@ -1,0 +1,3 @@
+name: GraphFlow 模式
+description: 标准模式的全部能力,并挂载 GraphFlow 上下文引擎(MCP 工具 mcp__graphflow__*:graphflow_plan / graphflow_context 等)与 GraphFlow Skill,用于图式上下文压缩与任务规划。
+order: 5
